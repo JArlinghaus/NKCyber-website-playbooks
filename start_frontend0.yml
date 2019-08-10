@@ -41,6 +41,7 @@
       command: pm2 delete ws-node
       ignore_errors: yes
     - name: Start pm2
+      chdir: "{{ release_path }}/frontend"
       command: pm2 start {{ current_path }}/frontend/server.js --name nkcyber-frontend
       environment:
         NODE_ENV: production
