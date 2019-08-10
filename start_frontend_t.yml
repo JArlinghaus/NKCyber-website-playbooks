@@ -45,13 +45,33 @@
         src={{ release_path }}
         dest={{ current_path }}
         state=link
+    - name: Create pm2 configuration file
+      copy:
+        dest: {{ current_path }}/frontend/nkcyber.config.js
+        content: |
+          module.exports = {
+            apps : [{
+              name: "app",
+              script: "./app.js",
+              env: {
+                NODE_ENV: "development",
+              },
+              env_production: {
+                NODE_ENV: "production",
+                PORT: 80
+              }
+            }]
+          }
+
+
     - name: Delete old pm2 process
       command: pm2 delete ws-node
       ignore_errors: yes
     - name: Start pm2
       shell: |
         cd {{ current_path }}/frontend
-        pm2 start server.js --name nkcyber-frontend --env NODE_ENV=production PORT=80
+
+        pm2 start nkcyber.config.js --name nkcyber-frontend --env production
     - name: Delete old dir
       shell: rm -rf {{ current_release_path.stdout }}/
       when: current_release_path.stdout != current_path
