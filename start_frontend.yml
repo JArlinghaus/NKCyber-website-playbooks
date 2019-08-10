@@ -2,7 +2,7 @@
   hosts: webservers
   gather_facts: no
   roles:
-    - geerlingguy.nodejs
+    - robertdebock.npm
     - geerlingguy.git
     - weareinteractive.pm2
   tasks:

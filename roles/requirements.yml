@@ -1,3 +1,3 @@
-- src: geerlingguy.nodejs
+- src: robertdebock.npm
 - src: weareinteractive.pm2
 - src: geerlingguy.git
