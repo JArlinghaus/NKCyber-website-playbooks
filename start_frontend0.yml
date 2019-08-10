@@ -1,5 +1,7 @@
 - name: Start frontend
   hosts: webservers
+  vars:
+    project_path: /var/www/nkcyberweb
   tasks:
     - name: Set some variable
       set_fact:

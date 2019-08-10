@@ -1,5 +1,7 @@
 - name: Start frontend
   hosts: webservers
+  vars:
+    project_path: /var/www/nkcyberweb
   roles:
     - geerlingguy.nodejs
     - geerlingguy.git
