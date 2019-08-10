@@ -3,7 +3,7 @@
   roles:
     - geerlingguy.nodejs
     - geerlingguy.git
-    - weareinteractive.pm2
+    - devops_cmp.ansible_pm2
   tasks:
     - name: Set some variable
       set_fact:
