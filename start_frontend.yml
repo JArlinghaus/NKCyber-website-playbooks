@@ -1,6 +1,5 @@
 - name: Start frontend
   hosts: webservers
-  gather_facts: no
   roles:
     - robertdebock.npm
     - geerlingguy.git
