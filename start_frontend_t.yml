@@ -6,9 +6,9 @@
     - geerlingguy.git
   tasks:
     - name: Install Requirements (Yum Packages)
-        yum:
-          name: nodejs
-          state: latest
+      yum:
+        name: nodejs
+        state: latest
     - name: Install pm2
       command: npm install pm2 -g
     - name: Set some variable
