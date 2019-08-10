@@ -4,7 +4,8 @@
     - undergreen.mongodb
   tasks:
     - name: Setup mongodb
-      include_vars: ./vars/mongodb.yml
+      include_vars: 
+        file: ./vars/mongodb.yml
       git:
         repo: git@github.com:JArlinghaus/NKCyber-Website.git
         dest: /var/www/nkcyber-web
