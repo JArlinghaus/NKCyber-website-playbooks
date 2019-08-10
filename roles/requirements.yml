@@ -1,3 +1,4 @@
 - src: geerlingguy.nodejs
 - src: devops_cmp.ansible_pm2
 - src: geerlingguy.git
+- src: undergreen.mongodb
