@@ -3,9 +3,8 @@
   vars:
     project_path: /var/www/nkcyberweb
   roles:
-    - geerlingguy.nodejs
-    - geerlingguy.git
     - devops_cmp.ansible_pm2
+    - geerlingguy.git
   tasks:
     - name: Set some variable
       set_fact:
