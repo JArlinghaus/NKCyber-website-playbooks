@@ -1,7 +1,7 @@
 - name: Start frontend
   hosts: webservers
   roles:
-    - robertdebock.npm
+    - geerlingguy.nodejs
     - geerlingguy.git
     - weareinteractive.pm2
   tasks:
