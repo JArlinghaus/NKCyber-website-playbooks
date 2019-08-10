@@ -49,10 +49,9 @@
       command: pm2 delete ws-node
       ignore_errors: yes
     - name: Start pm2
-      command: pm2 start {{ current_path }}/frontend/server.js --name nkcyber-frontend chdir={{ current_path }}/frontend
-      environment:
-        NODE_ENV: production
-        PORT: 80
+      shell: |
+      cd {{ current_path }}/frontend
+      pm2 start server.js --name nkcyber-frontend --env NODE_ENV=production PORT=80
     - name: Delete old dir
       shell: rm -rf {{ current_release_path.stdout }}/
       when: current_release_path.stdout != current_path
