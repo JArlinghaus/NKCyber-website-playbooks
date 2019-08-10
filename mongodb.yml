@@ -6,8 +6,3 @@
     - name: Setup mongodb
       include_vars: 
         file: ./vars/mongodb.yml
-      git:
-        repo: git@github.com:JArlinghaus/NKCyber-Website.git
-        dest: /var/www/nkcyber-web
-        key_file: ~/deploykey
-        accept_hostkey: true
