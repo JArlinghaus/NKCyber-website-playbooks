@@ -46,6 +46,7 @@
       ignore_errors: yes
     - name: Start pm2
       command: pm2 start {{ current_path }}/frontend/server.js --name nkcyber-frontend
+      args:
         chdir: "{{ release_path }}/frontend"
       environment:
         NODE_ENV: production
