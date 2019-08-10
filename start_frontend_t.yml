@@ -50,8 +50,8 @@
       ignore_errors: yes
     - name: Start pm2
       shell: |
-      cd {{ current_path }}/frontend
-      pm2 start server.js --name nkcyber-frontend --env NODE_ENV=production PORT=80
+        cd {{ current_path }}/frontend
+        pm2 start server.js --name nkcyber-frontend --env NODE_ENV=production PORT=80
     - name: Delete old dir
       shell: rm -rf {{ current_release_path.stdout }}/
       when: current_release_path.stdout != current_path
