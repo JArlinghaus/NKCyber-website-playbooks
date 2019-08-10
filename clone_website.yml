@@ -1,0 +1,10 @@
+- name: Clone website repo
+  hosts: webservers
+  gather_facts: no
+  tasks:
+    - name: Clone website repo
+      git:
+        repo: git@github.com:JArlinghaus/NKCyber-Website.git
+        dest: /var/www/nkcyber-web
+        key_file: ~/deploykey
+        accept_hostkey: true
