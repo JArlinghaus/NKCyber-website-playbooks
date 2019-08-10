@@ -48,7 +48,7 @@
     - name: Create pm2 configuration file
       template:
         src: ./frontendtemplate.js
-        dest: {{ current_path }}/frontend/nkcyber.config.js
+        dest: "{{ current_path }}/frontend/nkcyber.config.js"
     - name: Delete old pm2 process
       command: pm2 delete ws-node
       ignore_errors: yes
