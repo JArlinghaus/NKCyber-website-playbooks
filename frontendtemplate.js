@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: "nkcyber-fronted",
+    name: "nkcyber-frontend",
     script: "./server.js",
     env: {
       NODE_ENV: "development",
