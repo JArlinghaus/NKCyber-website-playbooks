@@ -1,11 +1,13 @@
 - name: Start frontend
-  hosts: webservers
+  hosts: frontend_webservers
   vars:
     project_path: /var/www/nkcyberweb
   roles:
-    - devops_cmp.ansible_pm2
+    - geerlingguy.nodejs
     - geerlingguy.git
   tasks:
+    - name: Install pm2
+      command: npm install pm2 -g
     - name: Set some variable
       set_fact:
         release_path: "{{ project_path }}/releases/{{ lookup('pipe','date +%Y%m%d%H%M%S') }}"
@@ -28,7 +30,7 @@
         dest: "{{ release_path }}"
         key_file: ~/deploykey
         accept_hostkey: true
-    - name: Update npm
+    - name: Install npm dependencies
       npm:
         path={{ release_path }}/frontend
     - name: Build new version of website
@@ -40,14 +42,17 @@
         src={{ release_path }}
         dest={{ current_path }}
         state=link
+    - name: Create pm2 configuration file
+      template:
+        src: ./frontendtemplate.js
+        dest: "{{ current_path }}/frontend/nkcyber.config.js"
     - name: Delete old pm2 process
       command: pm2 delete ws-node
       ignore_errors: yes
     - name: Start pm2
-      command: pm2 start {{ current_path }}/frontend/server.js --name nkcyber-frontend chdir={{ release_path }}/frontend
-      environment:
-        NODE_ENV: production
-        PORT: 80
+      shell: |
+        cd {{ current_path }}/frontend
+        pm2 start nkcyber.config.js --env production
     - name: Delete old dir
       shell: rm -rf {{ current_release_path.stdout }}/
       when: current_release_path.stdout != current_path
