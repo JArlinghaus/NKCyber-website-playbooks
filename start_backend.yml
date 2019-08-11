@@ -1,10 +1,13 @@
 - name: Start backend
   hosts: backend_webservers
+  vars_files:
+  - vars/webserver.yml
   vars:
     project_path: /var/www/nkcyberweb
   roles:
     - geerlingguy.nodejs
     - geerlingguy.git
+    - geerlingguy.firewall
   tasks:
     - name: Install pm2
       command: npm install pm2 -g

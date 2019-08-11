@@ -2,3 +2,4 @@
 - src: devops_cmp.ansible_pm2
 - src: geerlingguy.git
 - src: undergreen.mongodb
+- src: geerlingguy.firewall
