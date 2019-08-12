@@ -50,7 +50,7 @@
         src: ./frontendtemplate.js
         dest: "{{ current_path }}/frontend/nkcyber.config.js"
     - name: Delete old pm2 process
-      command: pm2 delete ws-node
+      command: pm2 delete nkcyber-frontend
       ignore_errors: yes
     - name: Start pm2
       shell: |

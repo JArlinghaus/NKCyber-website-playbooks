@@ -46,7 +46,7 @@
         src: ./backendtemplate.js
         dest: "{{ current_path }}/server/nkcyber.config.js"
     - name: Delete old pm2 process
-      command: pm2 delete ws-node
+      command: pm2 delete nkcyber-backend
       ignore_errors: yes
     - name: Start pm2
       shell: |
