@@ -7,6 +7,7 @@ module.exports = {
     },
     env_production: {
       NODE_ENV: "production",
+      PORT: {{ PORT }},
       DB_IP: "{{ DB_IP }}",
       LDAP_BIND_IP: "{{LDAP_BIND_IP}}",
       LDAP_BIND_DN: "{{LDAP_BIND_DN}}",
