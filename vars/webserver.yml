@@ -3,3 +3,4 @@ firewall_enabled_at_boot: true
 firewall_allowed_tcp_ports:
   - "22"
   - "80"
+  - "443"

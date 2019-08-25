@@ -8,6 +8,7 @@ module.exports = {
     env_production: {
       NODE_ENV: "production",
       PORT: {{ PORT }},
+      HTTPS: {{ HTTPS }},
       LDAPS: {{ LDAPS }},
       LDAP_BIND_PORT: {{ LDAP_BIND_PORT }},
       LDAP_CERT_PATH: "{{ release_path }}/server/DC.pem",

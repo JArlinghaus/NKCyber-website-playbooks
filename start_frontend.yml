@@ -45,6 +45,9 @@
         src={{ release_path }}
         dest={{ current_path }}
         state=link
+    - name: Generate self-signed HTTPS cert
+      shell: openssl req -x509 -newkey rsa:4096 -days 365 -nodes -batch -keyout {{ release_path }}/frontend/server.key -out {{ release_path }}/frontend/server.cert
+      when: HTTPS
     - name: Create pm2 configuration file
       template:
         src: ./frontendtemplate.js

@@ -41,6 +41,9 @@
         src={{ release_path }}
         dest={{ current_path }}
         state=link
+    - name: Generate self-signed HTTPS cert
+      shell: openssl req -x509 -newkey rsa:4096 -days 365 -nodes -batch -keyout {{ release_path }}/server/server.key -out {{ release_path }}/server/server.cert
+      when: HTTPS
     - name: Obtain LDAPS cert from LDAP server
       shell: openssl s_client -showcerts -connect {{ LDAP_BIND_IP }}:{{ LDAP_BIND_PORT }} </dev/null 2>/dev/null|openssl x509 -outform PEM > {{ release_path }}/server/DC.pem
       when: LDAPS
